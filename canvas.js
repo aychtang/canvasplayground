@@ -11,6 +11,7 @@
 		box: 10,
 
 		size : function(padding, size) {
+			if (padding === 0) return 'Please don\'t do that';
 			context.clearRect(0, 0, canvas.width, canvas.height);
 			square.box = size;
 			square.pad = padding;
