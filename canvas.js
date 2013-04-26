@@ -7,23 +7,29 @@
 	document.body.appendChild(canvas);
 
 	window.square = {
+		pad: 10,
 		box: 10,
 
-		size : function(size) {
+		size : function(padding, size) {
 			context.clearRect(0, 0, canvas.width, canvas.height);
 			square.box = size;
+			square.pad = padding;
 		},
 
-		get: function() {
+		getPadding : function() {
+			return square.pad;
+		},
+
+		getSize: function() {
 			return square.box;
 		}
 	};
 
 	var draw = function() {
-	  for (var i = 0; i < canvas.height / square.get(); i++) {
-	    for (var j = 0; j < canvas.width / square.get(); j++) {
+	  for (var i = 0; i < canvas.height / square.getPadding(); i++) {
+	    for (var j = 0; j < canvas.width / square.getPadding(); j++) {
 	      context.fillStyle = 'rgb(' + ~~(Math.random() * 255) + ',' + ~~(Math.random() * 255) + ',' + ~~(Math.random() * 255) + ')';
-	      context.fillRect( j * square.get(), i * square.get(), square.get(), square.get());
+	      context.fillRect( j * square.getPadding(), i * square.getPadding(), square.getSize(), square.getSize());
 	    }
 	  }
 	};
